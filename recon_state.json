@@ -5,16 +5,16 @@
       "mission": "1309A",
       "storm": "ISAIAS",
       "ob": 1,
-      "last_obs": "2026-10-09T19:41:00+00:00",
-      "last_heard": "2026-10-09T19:48:32.851585+00:00"
+      "last_obs": "2026-10-09T20:11:00+00:00",
+      "last_heard": "2026-10-09T20:18:58.020203+00:00"
     },
     "AF301-1409A": {
       "aircraft": "AF301",
       "mission": "1409A",
       "storm": "ISAIAS",
       "ob": 1,
-      "last_obs": "2026-10-09T19:40:00+00:00",
-      "last_heard": "2026-10-09T19:48:32.851585+00:00"
+      "last_obs": "2026-10-09T20:00:00+00:00",
+      "last_heard": "2026-10-09T20:18:58.020203+00:00"
     }
   },
   "seen_files": [
@@ -180,7 +180,12 @@
     "AHONT1-KNHC.202610091930.txt",
     "AHONT1-KWBC.202610091931.txt",
     "AHONT1-KNHC.202610091940.txt",
-    "AHONT1-KWBC.202610091941.txt"
+    "AHONT1-KWBC.202610091941.txt",
+    "AHONT1-KNHC.202610091950.txt",
+    "AHONT1-KWBC.202610091951.txt",
+    "AHONT1-KNHC.202610092000.txt",
+    "AHONT1-KWBC.202610092001.txt",
+    "AHONT1-KWBC.202610092011.txt"
   ],
   "done": [
     "AF309-1209A"
@@ -277,7 +282,13 @@
     "REPNT3-KNHC.202610091918.txt",
     "REPNT3-KNHC.202610091919.txt",
     "REPNT3-KNHC.202610091920.txt",
-    "REPNT3-KNHC.202610091926.txt"
+    "REPNT3-KNHC.202610091926.txt",
+    "REPNT3-KWBC.202610091910.txt",
+    "REPNT3-KWBC.202610091921.txt",
+    "REPNT3-KWBC.202610091928.txt",
+    "REPNT3-KWBC.202610091955.txt",
+    "REPNT3-KWBC.202610092000.txt",
+    "REPNT3-KWBC.202610092007.txt"
   ],
   "drop_keys": [
     "AF307-1009A-OB12-0906",
@@ -355,6 +366,8 @@
     "NOAA3-1309A-OB31-0919",
     "NOAA3-1309A-OB33-0919",
     "NOAA3-1309A-OB34-0920",
-    "NOAA3-1309A-OB35-0920"
+    "NOAA3-1309A-OB35-0920",
+    "NOAA3-1309A-OB32-0919",
+    "NOAA3-1309A-OB36-0920"
   ]
 }
