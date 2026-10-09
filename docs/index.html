@@ -44,6 +44,9 @@
       --focus: #9CBBF0;
     }
   }
+  @media (prefers-color-scheme: dark) {
+    .osm-tiles { filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.85); }
+  }
   *, *::before, *::after { box-sizing: inherit; }
   html, body { height: 100%; margin: 0; }
   body {
@@ -214,13 +217,17 @@
   document.getElementById("scale").innerHTML = STEPS.map(s => `<div style="background:${s[1]}"></div>`).join("");
 
   // Map
-  const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const map = L.map("map", { zoomControl: true, worldCopyJump: true }).setView([25, -78], 4);
-  L.tileLayer(`https://{s}.basemaps.cartocdn.com/${dark ? "dark_all" : "light_all"}/{z}/{x}/{y}{r}.png`, {
+  const streetMap = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 12,
-    subdomains: "abcd",
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>; data: NHC',
+    className: "osm-tiles",
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>; data: NHC',
   }).addTo(map);
+  const satellite = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+    maxZoom: 12,
+    attribution: "Imagery &copy; Esri; data: NHC",
+  });
+  L.control.layers({ "Map": streetMap, "Satellite": satellite }, null, { position: "topright" }).addTo(map);
 
   const layers = {
     tracks: L.layerGroup().addTo(map),
