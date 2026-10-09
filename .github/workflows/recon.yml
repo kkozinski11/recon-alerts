@@ -1,0 +1,47 @@
+name: Recon alerts
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # start a run every 30 min; each run checks every 5 min
+  workflow_dispatch:          # lets you run it by hand from the Actions tab
+    inputs:
+      test:
+        description: "Send a test notification"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write             # needed to save recon_state.json
+
+concurrency:
+  group: recon                # runs take turns: the next waits for the current one
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Check for Hurricane Hunter flights
+        run: python3 recon_alert.py ${{ inputs.test && '--test' || '--for 50' }}
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+
+      - name: Save state (backup; the script also saves after every check)
+        if: always()
+        run: |
+          [ -f recon_state.json ] || exit 0
+          git config user.name "recon-bot"
+          git config user.email "recon-bot@users.noreply.github.com"
+          git add recon_state.json
+          [ -f docs/map.json ] && git add docs/map.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Update recon state"
+          # Catch up with any edits made while this run was going, then save.
+          for i in 1 2 3; do
+            git pull --rebase -X theirs origin "$GITHUB_REF_NAME" && git push && exit 0
+            sleep 5
+          done
+          exit 1
