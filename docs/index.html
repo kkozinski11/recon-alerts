@@ -224,7 +224,8 @@
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>; data: NHC',
   }).addTo(map);
   // NASA GIBS daily true-color satellite imagery (no key needed)
-  const utcDate = daysAgo => new Date(Date.now() - daysAgo * 864e5).toISOString().slice(0, 10);
+  // Local date (YYYY-MM-DD), so "today" doesn't jump ahead in the evening
+  const utcDate = daysAgo => new Date(Date.now() - daysAgo * 864e5).toLocaleDateString("en-CA");
   const nasa = daysAgo => L.tileLayer(
     `https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/VIIRS_NOAA20_CorrectedReflectance_TrueColor/default/${utcDate(daysAgo)}/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpg`, {
       maxNativeZoom: 9,
