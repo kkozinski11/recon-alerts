@@ -13,8 +13,8 @@
       "mission": "1409A",
       "storm": "ISAIAS",
       "ob": 1,
-      "last_obs": "2026-10-09T22:40:00+00:00",
-      "last_heard": "2026-10-09T22:55:42.539388+00:00"
+      "last_obs": "2026-10-09T23:20:00+00:00",
+      "last_heard": "2026-10-09T23:36:12.792821+00:00"
     }
   },
   "seen_files": [
@@ -209,7 +209,11 @@
     "AHONT1-KNHC.202610092210.txt",
     "AHONT1-KNHC.202610092220.txt",
     "AHONT1-KNHC.202610092230.txt",
-    "AHONT1-KNHC.202610092240.txt"
+    "AHONT1-KNHC.202610092240.txt",
+    "AHONT1-KNHC.202610092250.txt",
+    "AHONT1-KNHC.202610092300.txt",
+    "AHONT1-KNHC.202610092310.txt",
+    "AHONT1-KNHC.202610092320.txt"
   ],
   "done": [
     "AF309-1209A"
@@ -326,7 +330,9 @@
     "REPNT3-KNHC.202610092125.txt",
     "REPNT3-KNHC.202610092141.txt",
     "REPNT3-KNHC.202610092227.txt",
-    "REPNT3-KNHC.202610092234.txt"
+    "REPNT3-KNHC.202610092234.txt",
+    "REPNT3-KNHC.202610092306.txt",
+    "REPNT3-KNHC.202610092307.txt"
   ],
   "drop_keys": [
     "AF307-1009A-OB12-0906",
@@ -420,6 +426,7 @@
     "AF301-1409A-OB28-0921",
     "AF301-1409A-OB32-0922",
     "AF301-1409A-OB31-0922",
-    "AF301-1409A-OB34-0923"
+    "AF301-1409A-OB34-0923",
+    "AF301-1409A-OB36-0923"
   ]
 }
