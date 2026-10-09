@@ -223,11 +223,19 @@
     className: "osm-tiles",
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>; data: NHC',
   }).addTo(map);
-  const satellite = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
-    maxZoom: 12,
-    attribution: "Imagery &copy; Esri; data: NHC",
-  });
-  L.control.layers({ "Map": streetMap, "Satellite": satellite }, null, { position: "topright" }).addTo(map);
+  // NASA GIBS daily true-color satellite imagery (no key needed)
+  const utcDate = daysAgo => new Date(Date.now() - daysAgo * 864e5).toISOString().slice(0, 10);
+  const nasa = daysAgo => L.tileLayer(
+    `https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/VIIRS_NOAA20_CorrectedReflectance_TrueColor/default/${utcDate(daysAgo)}/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpg`, {
+      maxNativeZoom: 9,
+      maxZoom: 12,
+      attribution: "Imagery: NASA GIBS; data: NHC",
+    });
+  L.control.layers({
+    "Map": streetMap,
+    "Satellite today": nasa(0),
+    "Satellite yesterday": nasa(1),
+  }, null, { position: "topright" }).addTo(map);
 
   const layers = {
     tracks: L.layerGroup().addTo(map),
