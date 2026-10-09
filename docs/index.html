@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Recon Map</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Recon">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#E9EEF1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1A2A" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="icon" href="icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #E9EEF1;
+    --strip: #FBFCFD;
+    --ink: #14233A;
+    --muted: #5B6B80;
+    --rule: #C9D3DC;
+    --usaf: #2457A6;
+    --noaa: #0E7C86;
+    --focus: #2457A6;
+    --sans: "Barlow", "Helvetica Neue", Arial, sans-serif;
+    --cond: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #0F1A2A;
+      --strip: #16243A;
+      --ink: #E6EDF5;
+      --muted: #94A5BA;
+      --rule: #2A3B55;
+      --usaf: #6E9BE6;
+      --noaa: #3CC3C9;
+      --focus: #9CBBF0;
+    }
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font: 15px/1.4 var(--sans);
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    height: 100%;
+    overflow: hidden;
+  }
+  #map { grid-column: 2; grid-row: 1; height: 100%; background: var(--paper); }
+  aside {
+    grid-column: 1; grid-row: 1;
+    display: flex; flex-direction: column;
+    min-height: 0;
+    border-right: 1px solid var(--rule);
+    background: var(--paper);
+  }
+  header { padding: 18px 18px 10px; }
+  h1 {
+    font: 700 30px/1 var(--cond);
+    letter-spacing: 0.01em;
+    margin: 0;
+  }
+  #status { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .toggles { display: flex; flex-wrap: wrap; gap: 6px; padding: 4px 18px 12px; }
+  .toggles button {
+    font: 600 14px/1 var(--cond);
+    letter-spacing: 0.02em;
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 7px 12px;
+    cursor: pointer;
+  }
+  .toggles button[aria-pressed="true"] { color: var(--paper); background: var(--ink); border-color: var(--ink); }
+  button:focus-visible, .strip:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  #strips { overflow-y: auto; padding: 0 18px 12px; flex: 1; min-height: 0; }
+  h2 { font: 600 15px/1.2 var(--sans); color: var(--muted); margin: 14px 0 8px; }
+
+  /* Flight progress strips */
+  .strip {
+    display: grid;
+    grid-template-columns: 8px 1fr;
+    background: var(--strip);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    color: inherit;
+    font: inherit;
+    padding: 0;
+  }
+  .strip .band { background: var(--usaf); border-radius: 2px 0 0 2px; }
+  .strip.noaa .band { background: var(--noaa); }
+  .strip.ended { opacity: 0.72; }
+  .strip .body { padding: 8px 10px 0; min-width: 0; }
+  .strip .top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+  .callsign { font: 700 24px/1 var(--cond); letter-spacing: 0.02em; }
+  .ago { font-size: 13px; color: var(--muted); white-space: nowrap; }
+  .sub { font-size: 13px; color: var(--muted); margin: 2px 0 8px; }
+  .cells { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--rule); margin: 0 -10px; }
+  .cell { padding: 6px 10px 7px; border-left: 1px solid var(--rule); }
+  .cell:first-child { border-left: 0; }
+  .cell b { display: block; font: 600 20px/1.05 var(--cond); }
+  .cell span { font-size: 12px; color: var(--muted); }
+
+  .empty { color: var(--muted); font-size: 14px; padding: 6px 0; max-width: 34ch; }
+
+  footer { padding: 10px 18px 14px; border-top: 1px solid var(--rule); }
+  .scale { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+  .scale div { height: 8px; }
+  .scale-labels { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; font: 600 12px/1.6 var(--cond); color: var(--muted); }
+  .scale-note { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* Map marks */
+  .plane { width: 34px; height: 34px; }
+  .plane svg { width: 34px; height: 34px; display: block; filter: drop-shadow(0 1px 1px rgba(0,0,0,.35)); }
+  .tag {
+    position: absolute; left: 30px; top: 6px;
+    font: 700 13px/1 var(--cond); letter-spacing: 0.03em;
+    background: var(--ink); color: var(--paper);
+    padding: 3px 5px; border-radius: 2px; white-space: nowrap;
+  }
+  .peak {
+    font: 700 13px/1 var(--cond); white-space: nowrap;
+    color: #fff; background: #7B1E5A; padding: 3px 5px; border-radius: 2px;
+    transform: translate(-50%, -50%); display: inline-block;
+    box-shadow: 0 0 0 1.5px #fff;
+  }
+  .drop {
+    font: 700 12px/1 var(--cond); white-space: nowrap;
+    color: var(--ink); background: var(--strip);
+    border: 1.5px solid var(--ink); border-radius: 999px;
+    padding: 3px 6px; transform: translate(-50%, -50%); display: inline-block;
+  }
+  .drop.eye { background: var(--ink); color: var(--paper); }
+  .leaflet-div-icon { background: transparent; border: 0; }
+  .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--strip); color: var(--ink); }
+  .leaflet-popup-content { font: 14px/1.45 var(--sans); margin: 10px 12px; }
+  .leaflet-popup-content strong { font: 700 18px/1.1 var(--cond); display: block; margin-bottom: 2px; }
+  .leaflet-container a.leaflet-popup-close-button { color: var(--muted); }
+  .leaflet-control-attribution { font-size: 10px; }
+
+  @media (max-width: 760px) {
+    body { grid-template-columns: 1fr; grid-template-rows: 1fr minmax(0, 42%); }
+    #map { grid-column: 1; grid-row: 1; }
+    aside { grid-column: 1; grid-row: 2; border-right: 0; border-top: 1px solid var(--rule); }
+    header { padding: 12px 16px 6px; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+    h1 { font-size: 24px; }
+    #status { margin: 0; }
+    .toggles { padding: 4px 16px 8px; flex-wrap: nowrap; overflow-x: auto; }
+    .toggles button { flex: none; }
+    #strips { padding: 0 16px 8px; }
+    footer { padding: 8px 16px 10px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<div id="map" role="region" aria-label="Map of reconnaissance flights"></div>
+<aside>
+  <header>
+    <h1>Recon</h1>
+    <div id="status" aria-live="polite">Loading flights…</div>
+  </header>
+  <div class="toggles" role="group" aria-label="Show on map">
+    <button type="button" data-layer="tracks" aria-pressed="true">Tracks</button>
+    <button type="button" data-layer="planes" aria-pressed="true">Planes</button>
+    <button type="button" data-layer="peaks" aria-pressed="true">Peak winds</button>
+    <button type="button" data-layer="drops" aria-pressed="true">Dropsondes</button>
+  </div>
+  <div id="strips"></div>
+  <footer>
+    <div class="scale" id="scale"></div>
+    <div class="scale-labels"><span>&lt;34</span><span>TS</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+    <div class="scale-note">Track color: flight-level wind, by hurricane category equivalent (kt)</div>
+  </footer>
+</aside>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(function () {
+  const DATA_URL = "map.json";
+  const REFRESH_MS = 60 * 1000;
+
+  // Flight-level wind (kt) colors, stepped at Saffir-Simpson thresholds
+  const STEPS = [
+    [0,   "#8A9AAE"],
+    [34,  "#2E9E6B"],
+    [64,  "#E2B000"],
+    [83,  "#F08A24"],
+    [96,  "#E0482B"],
+    [113, "#C2185B"],
+    [137, "#6A1B9A"],
+  ];
+  const windColor = kt => {
+    if (kt == null) return STEPS[0][1];
+    let c = STEPS[0][1];
+    for (const [min, col] of STEPS) if (kt >= min) c = col;
+    return c;
+  };
+  document.getElementById("scale").innerHTML = STEPS.map(s => `<div style="background:${s[1]}"></div>`).join("");
+
+  // Map
+  const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const map = L.map("map", { zoomControl: true, worldCopyJump: true }).setView([25, -78], 4);
+  L.tileLayer(`https://{s}.basemaps.cartocdn.com/${dark ? "dark_all" : "light_all"}/{z}/{x}/{y}{r}.png`, {
+    maxZoom: 12,
+    subdomains: "abcd",
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>; data: NHC',
+  }).addTo(map);
+
+  const layers = {
+    tracks: L.layerGroup().addTo(map),
+    peaks: L.layerGroup().addTo(map),
+    drops: L.layerGroup().addTo(map),
+    planes: L.layerGroup().addTo(map),
+  };
+  document.querySelectorAll(".toggles button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const on = btn.getAttribute("aria-pressed") !== "true";
+      btn.setAttribute("aria-pressed", String(on));
+      const layer = layers[btn.dataset.layer];
+      on ? map.addLayer(layer) : map.removeLayer(layer);
+    });
+  });
+
+  // Helpers
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const clock = t => new Date(t * 1000).toLocaleTimeString([], { hour: "numeric", minute: "2-digit", timeZoneName: "short" });
+  const ago = t => {
+    const m = Math.max(0, Math.round((Date.now() / 1000 - t) / 60));
+    if (m < 1) return "just now";
+    if (m < 60) return `${m} min ago`;
+    const h = Math.floor(m / 60);
+    return `${h} hr ${m % 60} min ago`;
+  };
+  const feet = m => (m == null ? "—" : Math.round(m * 3.281 / 100) * 100).toLocaleString();
+  const val = v => (v == null ? "—" : v);
+  const bearing = (a, b) => {
+    const toR = d => d * Math.PI / 180;
+    const y = Math.sin(toR(b[2] - a[2])) * Math.cos(toR(b[1]));
+    const x = Math.cos(toR(a[1])) * Math.sin(toR(b[1])) - Math.sin(toR(a[1])) * Math.cos(toR(b[1])) * Math.cos(toR(b[2] - a[2]));
+    return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
+  };
+  const stormName = s => s ? s.charAt(0) + s.slice(1).toLowerCase() : "Recon";
+  const planeSvg = (color, deg) =>
+    `<svg viewBox="0 0 24 24" style="transform:rotate(${deg}deg)" aria-hidden="true">
+       <path fill="${color}" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"
+         d="M12 2c.8 0 1.3.9 1.3 2v5.2l7.7 4.3v2l-7.7-2.2V18l2.2 1.6V21L12 20l-3.5 1v-1.4l2.2-1.6v-4.7L3 15.5v-2l7.7-4.3V4c0-1.1.5-2 1.3-2z"/>
+     </svg>`;
+
+  let fitted = false;
+  const planeMarkers = {};
+
+  function render(data) {
+    Object.values(layers).forEach(l => l.clearLayers());
+    const css = getComputedStyle(document.documentElement);
+    const agencyColor = m => css.getPropertyValue(m.agency === "NOAA" ? "--noaa" : "--usaf").trim();
+    const bounds = [];
+
+    for (const m of data.missions) {
+      const tr = m.track;
+      if (!tr.length) continue;
+      const opacity = m.active ? 0.95 : 0.4;
+      const weight = m.active ? 4 : 2.5;
+
+      // Draw the track in runs of the same wind color
+      let run = [[tr[0][1], tr[0][2]]], col = windColor(tr[0][3]);
+      for (let i = 1; i < tr.length; i++) {
+        const gap = tr[i][0] - tr[i - 1][0] > 15 * 60;    // data gap: break the line
+        const c = windColor(tr[i][3]);
+        if (gap) {
+          if (run.length > 1) L.polyline(run, { color: col, weight, opacity, lineCap: "round" }).addTo(layers.tracks);
+          run = [[tr[i][1], tr[i][2]]]; col = c; continue;
+        }
+        run.push([tr[i][1], tr[i][2]]);
+        if (c !== col) {
+          L.polyline(run, { color: col, weight, opacity, lineCap: "round" }).addTo(layers.tracks);
+          run = [[tr[i][1], tr[i][2]]]; col = c;
+        }
+      }
+      if (run.length > 1) L.polyline(run, { color: col, weight, opacity, lineCap: "round" }).addTo(layers.tracks);
+
+      // Peak flight-level wind
+      if (m.peak) {
+        L.marker([m.peak.lat, m.peak.lon], {
+          icon: L.divIcon({ className: "", html: `<span class="peak">${m.peak.kt} kt</span>`, iconSize: [0, 0] }),
+          keyboard: false,
+          opacity: m.active ? 1 : 0.6,
+        }).bindPopup(`<strong>Peak flight-level wind</strong>${m.peak.kt} kt (${Math.round(m.peak.kt * 1.151)} mph)<br>${esc(m.aircraft)}, ${clock(m.peak.t)}`)
+          .addTo(layers.peaks);
+      }
+
+      // Plane (active missions only)
+      if (m.active) {
+        const last = tr[tr.length - 1], prev = tr[Math.max(0, tr.length - 3)];
+        const deg = bearing(prev, last);
+        const marker = L.marker([last[1], last[2]], {
+          icon: L.divIcon({
+            className: "plane",
+            html: planeSvg(agencyColor(m), deg) + `<span class="tag">${esc(m.aircraft)}</span>`,
+            iconSize: [34, 34], iconAnchor: [17, 17],
+          }),
+          zIndexOffset: 1000,
+          title: `${m.aircraft} over ${stormName(m.storm)}`,
+        }).bindPopup(
+          `<strong>${esc(m.aircraft)}</strong>${esc(stormName(m.storm))}, mission ${esc(m.mission)}<br>` +
+          `Altitude ${feet(last[4])} ft<br>Flight-level wind ${val(last[3])} kt<br>` +
+          `Surface wind (SFMR) ${val(last[6])} kt<br>Last report ${clock(last[0])}`
+        ).addTo(layers.planes);
+        planeMarkers[m.id] = marker;
+        bounds.push([last[1], last[2]]);
+      }
+    }
+
+    for (const d of data.drops) {
+      const eye = d.note === "center" || d.note === "eyewall";
+      const label = d.pressure ? d.pressure : `${val(d.wind)} kt`;
+      L.marker([d.lat, d.lon], {
+        icon: L.divIcon({ className: "", html: `<span class="drop${d.note === "center" ? " eye" : ""}">${label}</span>`, iconSize: [0, 0] }),
+        title: `Dropsonde ${label}`,
+      }).bindPopup(
+        `<strong>${d.pressure ? d.pressure + " mb" : "Dropsonde"}</strong>` +
+        `Wind ${val(d.wind)} kt` + (d.wind ? ` (${Math.round(d.wind * 1.151)} mph)` : "") +
+        (d.wind_src && d.wind_src !== "sfc" ? `, ${esc(d.wind_src)}` : ", surface") + "<br>" +
+        (eye ? `${d.note === "center" ? "Center drop" : "Eyewall drop"}<br>` : "") +
+        `${esc(d.aircraft)}, ${clock(d.t)}`
+      ).addTo(layers.drops);
+    }
+
+    if (!fitted && bounds.length) {
+      map.fitBounds(L.latLngBounds(bounds).pad(0.6), { maxZoom: 7 });
+      fitted = true;
+    }
+    renderStrips(data);
+  }
+
+  function strip(m) {
+    const last = m.track[m.track.length - 1];
+    const el = document.createElement("button");
+    el.type = "button";
+    el.className = `strip ${m.agency === "NOAA" ? "noaa" : "usaf"}${m.active ? "" : " ended"}`;
+    el.innerHTML =
+      `<div class="band"></div><div class="body">
+         <div class="top"><span class="callsign">${esc(m.aircraft)}</span>
+           <span class="ago">${m.active ? "Last report " + ago(last[0]) : "Landed, last report " + clock(last[0])}</span></div>
+         <div class="sub">${esc(stormName(m.storm))}, mission ${esc(m.mission)}, ${m.agency === "NOAA" ? "NOAA" : "Air Force"}</div>
+         <div class="cells">
+           <div class="cell"><b>${feet(last[4])}</b><span>Altitude ft</span></div>
+           <div class="cell"><b>${val(last[3])}</b><span>Flt-lvl kt</span></div>
+           <div class="cell"><b>${m.peak ? m.peak.kt : "—"}</b><span>Peak kt</span></div>
+           <div class="cell"><b>${val(last[6])}</b><span>Surface kt</span></div>
+         </div>
+       </div>`;
+    el.addEventListener("click", () => {
+      if (m.active && planeMarkers[m.id]) {
+        map.flyTo(planeMarkers[m.id].getLatLng(), Math.max(map.getZoom(), 7), { duration: 0.8 });
+        planeMarkers[m.id].openPopup();
+      } else {
+        map.flyToBounds(L.latLngBounds(m.track.map(p => [p[1], p[2]])).pad(0.2), { duration: 0.8 });
+      }
+    });
+    return el;
+  }
+
+  function renderStrips(data) {
+    const box = document.getElementById("strips");
+    box.replaceChildren();
+    const active = data.missions.filter(m => m.active);
+    const ended = data.missions.filter(m => !m.active);
+    if (!active.length) {
+      const p = document.createElement("p");
+      p.className = "empty";
+      p.textContent = "No Hurricane Hunters are in the air right now. Flights from the last 24 hours stay on the map as faded tracks.";
+      box.append(p);
+    }
+    active.forEach(m => box.append(strip(m)));
+    if (ended.length) {
+      const h = document.createElement("h2");
+      h.textContent = "Earlier flights";
+      box.append(h);
+      ended.forEach(m => box.append(strip(m)));
+    }
+  }
+
+  async function load() {
+    const status = document.getElementById("status");
+    try {
+      const res = await fetch(`${DATA_URL}?t=${Date.now()}`, { cache: "no-store" });
+      if (!res.ok) throw new Error(res.status === 404 ? "missing" : `HTTP ${res.status}`);
+      const data = await res.json();
+      render(data);
+      const n = data.missions.filter(m => m.active).length;
+      status.textContent = `${n ? n + " in the air" : "None flying"}, new data ${data.updated ? ago(data.updated) : "pending"}`;
+    } catch (e) {
+      status.textContent = e.message === "missing"
+        ? "No flight data yet. The map fills in after the alert script records its first flight."
+        : "Couldn't load flight data. Retrying in a minute.";
+    }
+  }
+
+  load();
+  setInterval(load, REFRESH_MS);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) load(); });
+})();
+</script>
+</body>
+</html>
