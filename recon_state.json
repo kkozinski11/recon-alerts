@@ -5,16 +5,16 @@
       "mission": "1309A",
       "storm": "ISAIAS",
       "ob": 1,
-      "last_obs": "2026-10-09T19:01:00+00:00",
-      "last_heard": "2026-10-09T19:38:24.451343+00:00"
+      "last_obs": "2026-10-09T19:41:00+00:00",
+      "last_heard": "2026-10-09T19:48:32.851585+00:00"
     },
     "AF301-1409A": {
       "aircraft": "AF301",
       "mission": "1409A",
       "storm": "ISAIAS",
       "ob": 1,
-      "last_obs": "2026-10-09T19:00:00+00:00",
-      "last_heard": "2026-10-09T19:38:24.451343+00:00"
+      "last_obs": "2026-10-09T19:40:00+00:00",
+      "last_heard": "2026-10-09T19:48:32.851585+00:00"
     }
   },
   "seen_files": [
@@ -172,7 +172,15 @@
     "AHONT1-KNHC.202610091850.txt",
     "AHONT1-KWBC.202610091851.txt",
     "AHONT1-KNHC.202610091900.txt",
-    "AHONT1-KWBC.202610091901.txt"
+    "AHONT1-KWBC.202610091901.txt",
+    "AHONT1-KNHC.202610091910.txt",
+    "AHONT1-KWBC.202610091911.txt",
+    "AHONT1-KNHC.202610091920.txt",
+    "AHONT1-KWBC.202610091921.txt",
+    "AHONT1-KNHC.202610091930.txt",
+    "AHONT1-KWBC.202610091931.txt",
+    "AHONT1-KNHC.202610091940.txt",
+    "AHONT1-KWBC.202610091941.txt"
   ],
   "done": [
     "AF309-1209A"
@@ -262,7 +270,14 @@
     "REPNT3-KNHC.202610091825.txt",
     "REPNT3-KWBC.202610091829.txt",
     "REPNT3-KNHC.202610091830.txt",
-    "REPNT3-KWBC.202610091835.txt"
+    "REPNT3-KWBC.202610091835.txt",
+    "REPNT3-KWBC.202610091843.txt",
+    "REPNT3-KWBC.202610091846.txt",
+    "REPNT3-KWBC.202610091902.txt",
+    "REPNT3-KNHC.202610091918.txt",
+    "REPNT3-KNHC.202610091919.txt",
+    "REPNT3-KNHC.202610091920.txt",
+    "REPNT3-KNHC.202610091926.txt"
   ],
   "drop_keys": [
     "AF307-1009A-OB12-0906",
@@ -330,6 +345,12 @@
     "AF301-1409A-OB11-0918",
     "NOAA3-1309A-OB25-0918",
     "NOAA3-1309A-OB28-0919",
-    "NOAA3-1309A-OB29-0918"
+    "NOAA3-1309A-OB29-0918",
+    "NOAA3-1309A-OB27-0918",
+    "NOAA3-1309A-OB30-0919",
+    "AF301-1409A-OB13-0919",
+    "AF301-1409A-OB14-0919",
+    "AF301-1409A-OB15-0919",
+    "AF301-1409A-OB17-0919"
   ]
 }
