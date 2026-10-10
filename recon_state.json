@@ -1,14 +1,5 @@
 {
-  "active": {
-    "AF301-1409A": {
-      "aircraft": "AF301",
-      "mission": "1409A",
-      "storm": "ISAIAS",
-      "ob": 1,
-      "last_obs": "2026-10-10T00:50:00+00:00",
-      "last_heard": "2026-10-10T01:02:40.063765+00:00"
-    }
-  },
+  "active": {},
   "seen_files": [
     "AHONT1-KWBC.202610090453.txt",
     "AHONT1-KNHC.202610090459.txt",
@@ -218,7 +209,8 @@
   ],
   "done": [
     "AF309-1209A",
-    "NOAA3-1309A"
+    "NOAA3-1309A",
+    "AF301-1409A"
   ],
   "pod_hash": "46965507648289f4a777c36f613c320226723263589631f9a0ad54f490d85862",
   "seen_drops": [
