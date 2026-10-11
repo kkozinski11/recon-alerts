@@ -5,8 +5,8 @@
       "mission": "0220E",
       "storm": "SIMON",
       "ob": 2,
-      "last_obs": "2026-10-11T02:56:00+00:00",
-      "last_heard": "2026-10-11T03:06:09.969120+00:00"
+      "last_obs": "2026-10-11T03:16:00+00:00",
+      "last_heard": "2026-10-11T03:36:27.180534+00:00"
     }
   },
   "seen_files": [
@@ -225,7 +225,9 @@
     "AHONT1-KNHC.202610110226.txt",
     "AHONT1-KNHC.202610110236.txt",
     "AHONT1-KNHC.202610110246.txt",
-    "AHONT1-KNHC.202610110256.txt"
+    "AHONT1-KNHC.202610110256.txt",
+    "AHONT1-KNHC.202610110306.txt",
+    "AHONT1-KNHC.202610110316.txt"
   ],
   "done": [
     "AF309-1209A",
