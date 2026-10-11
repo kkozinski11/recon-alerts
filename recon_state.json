@@ -1,14 +1,5 @@
 {
-  "active": {
-    "AF302-0220E": {
-      "aircraft": "AF302",
-      "mission": "0220E",
-      "storm": "SIMON",
-      "ob": 2,
-      "last_obs": "2026-10-11T03:16:00+00:00",
-      "last_heard": "2026-10-11T03:36:27.180534+00:00"
-    }
-  },
+  "active": {},
   "seen_files": [
     "AHONT1-KWBC.202610090453.txt",
     "AHONT1-KNHC.202610090459.txt",
@@ -233,7 +224,8 @@
     "AF309-1209A",
     "NOAA3-1309A",
     "AF301-1409A",
-    "AF305-0120E"
+    "AF305-0120E",
+    "AF302-0220E"
   ],
   "pod_hash": "80b14ec7f4f857e7bae2faff2be42db649189aecdc1e82830d23c54507693c6d",
   "seen_drops": [
