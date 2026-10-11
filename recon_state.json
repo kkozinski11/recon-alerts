@@ -1,14 +1,5 @@
 {
-  "active": {
-    "AF307-WXWXA": {
-      "aircraft": "AF307",
-      "mission": "WXWXA",
-      "storm": "261011152631307",
-      "ob": 1,
-      "last_obs": "2026-10-11T16:36:00+00:00",
-      "last_heard": "2026-10-11T16:50:38.206520+00:00"
-    }
-  },
+  "active": {},
   "seen_files": [
     "AHONT1-KWBC.202610090453.txt",
     "AHONT1-KNHC.202610090459.txt",
@@ -253,7 +244,8 @@
     "AF301-1409A",
     "AF305-0120E",
     "AF302-0220E",
-    "AF305-WXWXA"
+    "AF305-WXWXA",
+    "AF307-WXWXA"
   ],
   "pod_hash": "32ce9781a3f43df26147d3dfb69768dcc3ce72d5482bd35d1216376e0c9188ae",
   "seen_drops": [
