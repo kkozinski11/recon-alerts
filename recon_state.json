@@ -1,13 +1,5 @@
 {
   "active": {
-    "AF305-WXWXA": {
-      "aircraft": "AF305",
-      "mission": "WXWXA",
-      "storm": "261011141711305",
-      "ob": 2,
-      "last_obs": "2026-10-11T16:05:00+00:00",
-      "last_heard": "2026-10-11T16:25:27.956569+00:00"
-    },
     "AF307-WXWXA": {
       "aircraft": "AF307",
       "mission": "WXWXA",
@@ -260,7 +252,8 @@
     "NOAA3-1309A",
     "AF301-1409A",
     "AF305-0120E",
-    "AF302-0220E"
+    "AF302-0220E",
+    "AF305-WXWXA"
   ],
   "pod_hash": "32ce9781a3f43df26147d3dfb69768dcc3ce72d5482bd35d1216376e0c9188ae",
   "seen_drops": [
