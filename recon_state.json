@@ -5,8 +5,16 @@
       "mission": "WXWXA",
       "storm": "261011141711305",
       "ob": 2,
-      "last_obs": "2026-10-11T15:05:00+00:00",
-      "last_heard": "2026-10-11T15:39:41.203428+00:00"
+      "last_obs": "2026-10-11T15:35:00+00:00",
+      "last_heard": "2026-10-11T15:49:45.129652+00:00"
+    },
+    "AF307-WXWXA": {
+      "aircraft": "AF307",
+      "mission": "WXWXA",
+      "storm": "261011152631307",
+      "ob": 1,
+      "last_obs": "2026-10-11T15:36:00+00:00",
+      "last_heard": "2026-10-11T15:49:45.129652+00:00"
     }
   },
   "seen_files": [
@@ -232,7 +240,11 @@
     "AHONT1-KNHC.202610111435.txt",
     "AHONT1-KNHC.202610111445.txt",
     "AHONT1-KNHC.202610111455.txt",
-    "AHONT1-KNHC.202610111505.txt"
+    "AHONT1-KNHC.202610111505.txt",
+    "AHONT1-KNHC.202610111515.txt",
+    "AHONT1-KNHC.202610111525.txt",
+    "AHONT1-KNHC.202610111535.txt",
+    "AHONT1-KNHC.202610111536.txt"
   ],
   "done": [
     "AF309-1209A",
