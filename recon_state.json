@@ -1,14 +1,5 @@
 {
-  "active": {
-    "AF307-0320E": {
-      "aircraft": "AF307",
-      "mission": "0320E",
-      "storm": "SIMON",
-      "ob": 12,
-      "last_obs": "2026-10-14T17:49:00+00:00",
-      "last_heard": "2026-10-14T19:04:25.087091+00:00"
-    }
-  },
+  "active": {},
   "seen_files": [
     "AHONT1-KWBC.202610090453.txt",
     "AHONT1-KNHC.202610090459.txt",
@@ -269,7 +260,8 @@
     "AF305-0120E",
     "AF302-0220E",
     "AF305-WXWXA",
-    "AF307-WXWXA"
+    "AF307-WXWXA",
+    "AF307-0320E"
   ],
   "pod_hash": "626ebdf21dce38aa3983c22d48f344e5a22d11253cdbec331738920b9d940717",
   "seen_drops": [
