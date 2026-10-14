@@ -1,5 +1,14 @@
 {
-  "active": {},
+  "active": {
+    "AF307-0320E": {
+      "aircraft": "AF307",
+      "mission": "0320E",
+      "storm": "SIMON",
+      "ob": 12,
+      "last_obs": "2026-10-14T17:19:00+00:00",
+      "last_heard": "2026-10-14T17:38:08.836069+00:00"
+    }
+  },
   "seen_files": [
     "AHONT1-KWBC.202610090453.txt",
     "AHONT1-KNHC.202610090459.txt",
@@ -236,7 +245,19 @@
     "AHONT1-KNHC.202610111606.txt",
     "AHONT1-KNHC.202610111616.txt",
     "AHONT1-KNHC.202610111626.txt",
-    "AHONT1-KNHC.202610111636.txt"
+    "AHONT1-KNHC.202610111636.txt",
+    "AHONT1-KNHC.202610141708.txt",
+    "AHONT1-KNHC.202610141709.txt",
+    "AHONT1-KNHC.202610141710.txt",
+    "AHONT1-KNHC.202610141711.txt",
+    "AHONT1-KNHC.202610141712.txt",
+    "AHONT1-KNHC.202610141713.txt",
+    "AHONT1-KNHC.202610141714.txt",
+    "AHONT1-KNHC.202610141715.txt",
+    "AHONT1-KNHC.202610141716.txt",
+    "AHONT1-KNHC.202610141717.txt",
+    "AHONT1-KNHC.202610141718.txt",
+    "AHONT1-KNHC.202610141719.txt"
   ],
   "done": [
     "AF309-1209A",
