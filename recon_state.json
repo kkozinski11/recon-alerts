@@ -7,6 +7,14 @@
       "ob": 1,
       "last_obs": "2026-10-17T12:47:00+00:00",
       "last_heard": "2026-10-17T13:21:29.706158+00:00"
+    },
+    "AF301-0321E": {
+      "aircraft": "AF301",
+      "mission": "0321E",
+      "storm": "TRUDY",
+      "ob": 3,
+      "last_obs": "2026-10-17T14:34:00+00:00",
+      "last_heard": "2026-10-17T14:47:42.571804+00:00"
     }
   },
   "seen_files": [
@@ -327,7 +335,10 @@
     "AHONT1-KNHC.202610171231.txt",
     "AHONT1-KNHC.202610171237.txt",
     "AHONT1-KNHC.202610171239.txt",
-    "AHONT1-KNHC.202610171247.txt"
+    "AHONT1-KNHC.202610171247.txt",
+    "AHONT1-KNHC.202610171414.txt",
+    "AHONT1-KNHC.202610171424.txt",
+    "AHONT1-KNHC.202610171434.txt"
   ],
   "done": [
     "AF309-1209A",
