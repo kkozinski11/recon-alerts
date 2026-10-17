@@ -5,8 +5,8 @@
       "mission": "0321E",
       "storm": "TRUDY",
       "ob": 3,
-      "last_obs": "2026-10-17T15:34:00+00:00",
-      "last_heard": "2026-10-17T15:48:46.426483+00:00"
+      "last_obs": "2026-10-17T16:04:00+00:00",
+      "last_heard": "2026-10-17T16:19:03.712484+00:00"
     }
   },
   "seen_files": [
@@ -336,7 +336,10 @@
     "AHONT1-KNHC.202610171504.txt",
     "AHONT1-KNHC.202610171514.txt",
     "AHONT1-KNHC.202610171524.txt",
-    "AHONT1-KNHC.202610171534.txt"
+    "AHONT1-KNHC.202610171534.txt",
+    "AHONT1-KNHC.202610171544.txt",
+    "AHONT1-KNHC.202610171554.txt",
+    "AHONT1-KNHC.202610171604.txt"
   ],
   "done": [
     "AF309-1209A",
@@ -467,7 +470,8 @@
     "REPNT3-KNHC.202610092306.txt",
     "REPNT3-KNHC.202610092307.txt",
     "REPNT3-KNHC.202610100055.txt",
-    "REPNT3-KNHC.202610151321.txt"
+    "REPNT3-KNHC.202610151321.txt",
+    "REPNT3-KNHC.202610171543.txt"
   ],
   "drop_keys": [
     "AF307-1009A-OB12-0906",
