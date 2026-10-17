@@ -1,5 +1,14 @@
 {
-  "active": {},
+  "active": {
+    "AF306-0321E": {
+      "aircraft": "AF306",
+      "mission": "0321E",
+      "storm": "TRUDY",
+      "ob": 1,
+      "last_obs": "2026-10-17T12:39:00+00:00",
+      "last_heard": "2026-10-17T12:51:12.427662+00:00"
+    }
+  },
   "seen_files": [
     "AHONT1-KWBC.202610090453.txt",
     "AHONT1-KNHC.202610090459.txt",
@@ -314,7 +323,10 @@
     "AHONT1-KNHC.202610162013.txt",
     "AHONT1-KNHC.202610162023.txt",
     "AHONT1-KNHC.202610162033.txt",
-    "AHONT1-KNHC.202610162043.txt"
+    "AHONT1-KNHC.202610162043.txt",
+    "AHONT1-KNHC.202610171231.txt",
+    "AHONT1-KNHC.202610171237.txt",
+    "AHONT1-KNHC.202610171239.txt"
   ],
   "done": [
     "AF309-1209A",
