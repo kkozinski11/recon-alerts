@@ -1,14 +1,5 @@
 {
-  "active": {
-    "AF301-0321E": {
-      "aircraft": "AF301",
-      "mission": "0321E",
-      "storm": "TRUDY",
-      "ob": 3,
-      "last_obs": "2026-10-17T17:24:00+00:00",
-      "last_heard": "2026-10-17T17:50:50.208047+00:00"
-    }
-  },
+  "active": {},
   "seen_files": [
     "AHONT1-KWBC.202610090453.txt",
     "AHONT1-KNHC.202610090459.txt",
@@ -360,7 +351,8 @@
     "AF307-0320E",
     "AF307-0121E",
     "AF306-0221E",
-    "AF306-0321E"
+    "AF306-0321E",
+    "AF301-0321E"
   ],
   "pod_hash": "28d6171a96f87e768dc3b754459efd09cbe9cc80843b0644982a9f9ac73d82cc",
   "seen_drops": [
