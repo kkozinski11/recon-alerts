@@ -5,8 +5,8 @@
       "mission": "WXWXA",
       "storm": "261020160808300",
       "ob": 5,
-      "last_obs": "2026-10-20T17:38:00+00:00",
-      "last_heard": "2026-10-20T17:53:30.084008+00:00"
+      "last_obs": "2026-10-20T18:18:00+00:00",
+      "last_heard": "2026-10-20T18:38:59.849382+00:00"
     }
   },
   "seen_files": [
@@ -378,7 +378,11 @@
     "AHONT1-KNHC.202610201708.txt",
     "AHONT1-KNHC.202610201718.txt",
     "AHONT1-KNHC.202610201728.txt",
-    "AHONT1-KNHC.202610201738.txt"
+    "AHONT1-KNHC.202610201738.txt",
+    "AHONT1-KNHC.202610201750.txt",
+    "AHONT1-KNHC.202610201758.txt",
+    "AHONT1-KNHC.202610201809.txt",
+    "AHONT1-KNHC.202610201818.txt"
   ],
   "done": [
     "AF309-1209A",
@@ -512,7 +516,8 @@
     "REPNT3-KNHC.202610092307.txt",
     "REPNT3-KNHC.202610100055.txt",
     "REPNT3-KNHC.202610151321.txt",
-    "REPNT3-KNHC.202610171543.txt"
+    "REPNT3-KNHC.202610171543.txt",
+    "REPNT3-KNHC.202610201804.txt"
   ],
   "drop_keys": [
     "AF307-1009A-OB12-0906",
