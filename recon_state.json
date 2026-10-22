@@ -1,5 +1,14 @@
 {
-  "active": {},
+  "active": {
+    "AF301-WXWXA": {
+      "aircraft": "AF301",
+      "mission": "WXWXA",
+      "storm": "261022152942301",
+      "ob": 4,
+      "last_obs": "2026-10-22T16:11:00+00:00",
+      "last_heard": "2026-10-22T16:24:24.170240+00:00"
+    }
+  },
   "seen_files": [
     "AHONT1-KWBC.202610090453.txt",
     "AHONT1-KNHC.202610090459.txt",
@@ -399,7 +408,11 @@
     "AHONT1-KWBC.202610211708.txt",
     "AHONT1-KWBC.202610211718.txt",
     "AHONT1-KWBC.202610211728.txt",
-    "AHONT1-KWBC.202610211738.txt"
+    "AHONT1-KWBC.202610211738.txt",
+    "AHONT1-KNHC.202610221540.txt",
+    "AHONT1-KNHC.202610221550.txt",
+    "AHONT1-KNHC.202610221600.txt",
+    "AHONT1-KNHC.202610221611.txt"
   ],
   "done": [
     "AF309-1209A",
