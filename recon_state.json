@@ -1,14 +1,5 @@
 {
-  "active": {
-    "AF308-WXWXA": {
-      "aircraft": "AF308",
-      "mission": "WXWXA",
-      "storm": "261029152558308",
-      "ob": 3,
-      "last_obs": "2026-10-29T17:25:00+00:00",
-      "last_heard": "2026-10-29T17:36:17.645931+00:00"
-    }
-  },
+  "active": {},
   "seen_files": [
     "AHONT1-KWBC.202610090453.txt",
     "AHONT1-KNHC.202610090459.txt",
@@ -508,7 +499,8 @@
     "AF305-0421E",
     "AF300-WXWXA",
     "NOAA9-WXWXA",
-    "AF301-WXWXA"
+    "AF301-WXWXA",
+    "AF308-WXWXA"
   ],
   "pod_hash": "f2f69fc2ebb0d570f3b216627dae16db31374541144f6c84161aea7c22caa2a7",
   "seen_drops": [
