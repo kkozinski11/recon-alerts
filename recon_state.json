@@ -1,5 +1,14 @@
 {
-  "active": {},
+  "active": {
+    "AF308-WXWXA": {
+      "aircraft": "AF308",
+      "mission": "WXWXA",
+      "storm": "261029152558308",
+      "ob": 3,
+      "last_obs": "2026-10-29T15:55:00+00:00",
+      "last_heard": "2026-10-29T16:05:27.902329+00:00"
+    }
+  },
   "seen_files": [
     "AHONT1-KWBC.202610090453.txt",
     "AHONT1-KNHC.202610090459.txt",
@@ -469,7 +478,10 @@
     "AHONT1-KNHC.202610280011.txt",
     "AHONT1-KNHC.202610280021.txt",
     "AHONT1-KNHC.202610280031.txt",
-    "AHONT1-KNHC.202610280041.txt"
+    "AHONT1-KNHC.202610280041.txt",
+    "AHONT1-KNHC.202610291535.txt",
+    "AHONT1-KNHC.202610291545.txt",
+    "AHONT1-KNHC.202610291555.txt"
   ],
   "done": [
     "AF309-1209A",
