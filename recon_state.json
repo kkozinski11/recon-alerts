@@ -5,8 +5,8 @@
       "mission": "WXWXA",
       "storm": "261104162232304",
       "ob": 3,
-      "last_obs": "2026-11-04T17:52:00+00:00",
-      "last_heard": "2026-11-04T18:06:33.740733+00:00"
+      "last_obs": "2026-11-04T18:22:00+00:00",
+      "last_heard": "2026-11-04T18:42:49.121800+00:00"
     }
   },
   "seen_files": [
@@ -531,7 +531,9 @@
     "AHONT1-KNHC.202611041712.txt",
     "AHONT1-KNHC.202611041722.txt",
     "AHONT1-KNHC.202611041742.txt",
-    "AHONT1-KNHC.202611041752.txt"
+    "AHONT1-KNHC.202611041752.txt",
+    "AHONT1-KNHC.202611041812.txt",
+    "AHONT1-KNHC.202611041822.txt"
   ],
   "done": [
     "AF309-1209A",
