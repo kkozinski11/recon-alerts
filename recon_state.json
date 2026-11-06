@@ -5,8 +5,8 @@
       "mission": "WXWXA",
       "storm": "TRAIN",
       "ob": 2,
-      "last_obs": "2026-11-06T15:36:00+00:00",
-      "last_heard": "2026-11-06T15:52:36.522876+00:00"
+      "last_obs": "2026-11-06T16:06:00+00:00",
+      "last_heard": "2026-11-06T16:22:41.979464+00:00"
     }
   },
   "seen_files": [
@@ -598,7 +598,10 @@
     "AHONT1-KWBC.202611061506.txt",
     "AHONT1-KWBC.202611061516.txt",
     "AHONT1-KWBC.202611061526.txt",
-    "AHONT1-KWBC.202611061536.txt"
+    "AHONT1-KWBC.202611061536.txt",
+    "AHONT1-KWBC.202611061546.txt",
+    "AHONT1-KWBC.202611061556.txt",
+    "AHONT1-KWBC.202611061606.txt"
   ],
   "done": [
     "AF309-1209A",
