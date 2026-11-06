@@ -1,14 +1,5 @@
 {
-  "active": {
-    "NOAA3-WXWXA": {
-      "aircraft": "NOAA3",
-      "mission": "WXWXA",
-      "storm": "TRAIN",
-      "ob": 2,
-      "last_obs": "2026-11-06T16:46:00+00:00",
-      "last_heard": "2026-11-06T16:49:27.969180+00:00"
-    }
-  },
+  "active": {},
   "seen_files": [
     "AHONT1-KWBC.202610090453.txt",
     "AHONT1-KNHC.202610090459.txt",
@@ -625,7 +616,8 @@
     "NOAA9-WXWXA",
     "AF301-WXWXA",
     "AF308-WXWXA",
-    "AF304-WXWXA"
+    "AF304-WXWXA",
+    "NOAA3-WXWXA"
   ],
   "pod_hash": "e7d09646e30b07a93015e144f98b1bb308668a49b80828a8152da001272def02",
   "seen_drops": [
