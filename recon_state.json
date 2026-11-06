@@ -1,5 +1,14 @@
 {
-  "active": {},
+  "active": {
+    "NOAA3-WXWXA": {
+      "aircraft": "NOAA3",
+      "mission": "WXWXA",
+      "storm": "TRAIN",
+      "ob": 2,
+      "last_obs": "2026-11-06T15:06:00+00:00",
+      "last_heard": "2026-11-06T15:19:33.526101+00:00"
+    }
+  },
   "seen_files": [
     "AHONT1-KWBC.202610090453.txt",
     "AHONT1-KNHC.202610090459.txt",
@@ -584,7 +593,9 @@
     "AHONT1-KNHC.202611060131.txt",
     "AHONT1-KNHC.202611060141.txt",
     "AHONT1-KNHC.202611060151.txt",
-    "AHONT1-KNHC.202611060201.txt"
+    "AHONT1-KNHC.202611060201.txt",
+    "AHONT1-KWBC.202611061456.txt",
+    "AHONT1-KWBC.202611061506.txt"
   ],
   "done": [
     "AF309-1209A",
