@@ -1,5 +1,14 @@
 {
-  "active": {},
+  "active": {
+    "AF309-WXWXA": {
+      "aircraft": "AF309",
+      "mission": "WXWXA",
+      "storm": "261109153126309",
+      "ob": 19,
+      "last_obs": "2026-11-09T18:41:00+00:00",
+      "last_heard": "2026-11-09T19:29:21.471011+00:00"
+    }
+  },
   "seen_files": [
     "AHONT1-KWBC.202610090453.txt",
     "AHONT1-KNHC.202610090459.txt",
@@ -625,7 +634,24 @@
     "AHONT1-KNHC.202611081800.txt",
     "AHONT1-KNHC.202611081810.txt",
     "AHONT1-KNHC.202611081820.txt",
-    "AHONT1-KNHC.202611081830.txt"
+    "AHONT1-KNHC.202611081830.txt",
+    "AHONT1-KNHC.202611091541.txt",
+    "AHONT1-KNHC.202611091551.txt",
+    "AHONT1-KNHC.202611091601.txt",
+    "AHONT1-KNHC.202611091646.txt",
+    "AHONT1-KNHC.202611091647.txt",
+    "AHONT1-KNHC.202611091649.txt",
+    "AHONT1-KNHC.202611091701.txt",
+    "AHONT1-KNHC.202611091711.txt",
+    "AHONT1-KNHC.202611091721.txt",
+    "AHONT1-KNHC.202611091731.txt",
+    "AHONT1-KNHC.202611091741.txt",
+    "AHONT1-KNHC.202611091751.txt",
+    "AHONT1-KNHC.202611091801.txt",
+    "AHONT1-KNHC.202611091811.txt",
+    "AHONT1-KNHC.202611091821.txt",
+    "AHONT1-KNHC.202611091831.txt",
+    "AHONT1-KNHC.202611091841.txt"
   ],
   "done": [
     "AF309-1209A",
@@ -648,7 +674,7 @@
     "AF304-WXWXA",
     "NOAA3-WXWXA"
   ],
-  "pod_hash": "39b6c10fafc3ab2eb5c4badd2391b95f7b5a9fca4ddc8b28f389c42da195da3b",
+  "pod_hash": "de057e1c616b5274c1048dfccede19f0bd077713debc08f29bb1ad72ec3cf343",
   "seen_drops": [
     "REPNT3-KNHC.202610090451.txt",
     "REPNT3-KWBC.202610090454.txt",
